@@ -1,0 +1,5 @@
+{
+    "plantuml.diagramsRoot": "src",
+    "plantuml.exportFormat": "png",
+    "git.ignoreLimitWarning": true
+}
