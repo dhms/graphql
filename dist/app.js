@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const cors = require("cors");
+const compression = require("compression");
+const helmet = require("helmet");
 const express = require("express");
 const graphqlHTTP = require("express-graphql");
 const schema_1 = require("./graphql/schema");
@@ -18,6 +21,15 @@ class App {
         this.middleware();
     }
     middleware() {
+        this.express.use(cors({
+            origin: "*",
+            methods: ['GET', 'POST'],
+            allowedHeaders: ['Content-Type', 'Authorization', 'Accept-Enconding'],
+            preflightContinue: false,
+            optionsSuccessStatus: 204
+        }));
+        this.express.use(compression());
+        this.express.use(helmet());
         this.express.use('/graphql', extract_jwt_middleware_1.extractJwtMiddleware(), (req, res, next) => {
             req['context']['db'] = models_1.default;
             req['context']['dataloaders'] = this.dataLoaderFactory.getLoaders();

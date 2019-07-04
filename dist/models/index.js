@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(module.filename);
-const env = 'development';
+const env = 'test';
 let config = require(path.resolve(`${__dirname}./../config/config.json`))[env];
 let db = null;
 if (!db) {
@@ -17,7 +17,8 @@ if (!db) {
     fs
         .readdirSync(__dirname)
         .filter((file) => {
-        return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+        const fileSlice = file.slice(-3);
+        return (file.indexOf('.') !== 0) && (file !== basename) && ((fileSlice === '.js') || (fileSlice === '.ts'));
     })
         .forEach((file) => {
         const model = sequelize.import(path.join(__dirname, file));

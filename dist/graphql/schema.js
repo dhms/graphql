@@ -76,7 +76,7 @@ const resolvers = {
                 attributes: context.requestedFields.getFields(info, { keep: ['id'], exclude: ['comments'] })
             })
                 .then((post) => {
-                if (post)
+                if (!post)
                     throw new Error(`Post with id ${id} not found`);
                 return post;
             }).catch(utils_1.handleError);

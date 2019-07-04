@@ -10,8 +10,8 @@ class DataLoaderFactory {
     }
     getLoaders() {
         return {
-            userLoader: new DataLoader((params) => UserLoader_1.UserLoader.batchUsers(this.db.User, params), { cacheKeyFn: (param) => param.key }),
-            postLoader: new DataLoader((params) => PostLoader_1.Postloader.batchPosts(this.db.Post, params), { cacheKeyFn: (param) => param.key })
+            userLoader: new DataLoader((params) => UserLoader_1.UserLoader.batchUsers(this.db.User, params, this.requestedFields), { cacheKeyFn: (param) => param.key }),
+            postLoader: new DataLoader((params) => PostLoader_1.Postloader.batchPosts(this.db.Post, params, this.requestedFields), { cacheKeyFn: (param) => param.key })
         };
     }
 }

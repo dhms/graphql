@@ -1,3 +1,6 @@
+import * as cors from 'cors';
+import * as compression from 'compression';
+import * as helmet from 'helmet';
 import * as express from 'express';
 import * as graphqlHTTP from 'express-graphql';
 import schema from './graphql/schema';
@@ -26,6 +29,18 @@ class App{
     }
 
     private middleware(): void{
+
+        this.express.use(cors({
+            origin: "*",
+            methods: ['GET', 'POST'],
+            allowedHeaders: ['Content-Type', 'Authorization', 'Accept-Enconding'],
+            preflightContinue: false,
+            optionsSuccessStatus: 204
+        }));
+
+        this.express.use(compression());
+        this.express.use(helmet());
+
         this.express.use('/graphql', 
 
             extractJwtMiddleware(),

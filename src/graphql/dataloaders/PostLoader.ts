@@ -4,7 +4,7 @@ import { RequestedFields } from "../ast/RequestedFields";
 
 export class Postloader{
 
-    static batchPosts(Post: PostModel, params: DataLoaderParam<number>[], requestedFields: RequestedFields): Promise<UserInstance[]>{
+    static batchPosts(Post: PostModel, params: DataLoaderParam<number>[], requestedFields: RequestedFields): Promise<PostInstance[]>{
         
         let ids: number[] = params.map(param => param.key);
         return Promise.resolve(
