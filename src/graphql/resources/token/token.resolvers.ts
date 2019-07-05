@@ -3,7 +3,7 @@ import { DbConnection } from "../../../interfaces/DbConnectionInterface";
 import { UserInstance } from "../../../models/UserModel";
 import { JWT_SECRET } from '../../../utils/utils';
 
-const tokenResolvers = {
+export const tokenResolvers = {
 
     Mutation: {
 

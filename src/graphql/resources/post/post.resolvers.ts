@@ -49,7 +49,7 @@ export const postResolvers = {
                     attributes: context.requestedFields.getFields(info, {keep: ['id'], exclude: ['comments']})
                 })
                 .then((post: PostInstance) => {
-                    if(post) 
+                    if(!post) 
                         throw new Error(`Post with id ${id} not found`);
                     return post;
                 }).catch(handleError);

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const jwt = require("jsonwebtoken");
 const utils_1 = require("../../../utils/utils");
-const tokenResolvers = {
+exports.tokenResolvers = {
     Mutation: {
         createToken: (parent, { email, password }, { db }) => {
             return db.User.findOne({
