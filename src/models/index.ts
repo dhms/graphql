@@ -5,7 +5,7 @@ import { DbConnection } from '../interfaces/DbConnectionInterface';
 
 const basename: string = path.basename(module.filename);
 const env: string = 'development';
-
+ 
 let config = require(path.resolve(`${__dirname}./../config/config.json`))[env];
 let db = null;
 
